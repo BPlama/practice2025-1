@@ -3,6 +3,7 @@ body {
     margin: 0;
     background-color: #f9f9f9;
     color: #333;
+    padding-bottom: 80px;
   }
   
   header {
@@ -23,6 +24,29 @@ h2 {
 
 p {
     font-size: 20px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+
+.journal-photo-block {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 1em;
+}
+
+.journal-photo {
+  width: 800px;
+  border: 6px solid #aaa;
+  border-radius: 8px;
+}
+
+li {
+  font-size: 20px;
 }
   nav ul {
     list-style: none;
