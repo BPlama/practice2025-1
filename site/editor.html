@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Редактор текста</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1 style="margin-left: 20px;">Текстовый редактор на языке Python</h1>
+  <nav>
+    <div class="nav-buttons">
+      <div class="btn btn-border-to-line">
+        <a href="index.html" class="btn-border-to-line-text">
+          <svg viewBox="0 0 180 50" preserveAspectRatio="none">
+            <rect x="0" y="0" width="180" height="50" />
+          </svg>
+          Главная
+        </a>
+      </div>
+      <div class="btn btn-border-to-line">
+        <a href="about.html" class="btn-border-to-line-text">
+          <svg viewBox="0 0 180 50" preserveAspectRatio="none">
+            <rect x="0" y="0" width="180" height="50" />
+          </svg>
+          О проекте
+        </a>
+      </div>
+      <div class="btn btn-border-to-line">
+        <a href="team.html" class="btn-border-to-line-text">
+          <svg viewBox="0 0 180 50" preserveAspectRatio="none">
+            <rect x="0" y="0" width="180" height="50" />
+          </svg>
+          Участники
+        </a>
+      </div>
+      <div class="btn btn-border-to-line">
+        <a href="journal.html" class="btn-border-to-line-text">
+          <svg viewBox="0 0 180 50" preserveAspectRatio="none">
+            <rect x="0" y="0" width="180" height="50" />
+          </svg>
+          Журнал
+        </a>
+      </div>
+      <div class="btn btn-border-to-line">
+        <a href="resources.html" class="btn-border-to-line-text">
+          <svg viewBox="0 0 180 50" preserveAspectRatio="none">
+            <rect x="0" y="0" width="180" height="50" />
+          </svg>
+          Ресурсы
+        </a>
+      </div>
+      <div class="btn btn-border-to-line">
+        <a href="editor.html" class="btn-border-to-line-text">
+          <svg viewBox="0 0 180 50" preserveAspectRatio="none">
+            <rect x="0" y="0" width="180" height="50" />
+          </svg>
+          Редактор
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<main>
+
+<section>
+    <h1 class="center-text">Описание проекта</h1>
+    <div class="left-margin">
+            <p>Редактор текста на Python — это часть проектной практики, направленная на изучение языка Python и библиотеки <strong>Tkinter</strong> для создания GUI-приложений.</p>
+            <p>Возможности редактора:</p>
+    <ul>
+        <li>Открытие и сохранение файлов.</li>
+        <li>Редактирование текста в окне.</li>
+        <li>Поиск слов с подсветкой.</li>
+        <li>Горячие клавиши (Ctrl+O, Ctrl+S, Ctrl+F).</li>
+    </ul>
+    </div>
+</section>
+
+<section>
+<h1 class="center-text">Этапы разработки</h1>
+<div class="left-margin">
+    <ol>
+        <li>Создание основного окна приложения.</li>
+        <li>Добавление меню с пунктами "Открыть", "Сохранить", "Выход".</li>
+        <li>Вставка текстового поля для редактирования.</li>
+        <li>Реализация поиска текста по слову с подсветкой найденного.</li>
+        <li>Добавление панели поиска и кнопки "Найти".</li>
+    </ol>
+</div>
+</section>
+
+<section>
+<h1 class="center-text">Пример кода</h1>
+<div class="left-margin">
+    <p><strong>Создание окна и меню:</strong></p>
+    <pre><code>root = tk.Tk()
+root.title("Редактор текста")
+root.geometry("800x600")</code></pre>
+
+    <p><strong>Добавление текстового поля:</strong></p>
+    <pre><code>text_area = tk.Text(root, wrap='word')
+text_area.pack(expand=1, fill='both')</code></pre>
+
+    <p><strong>Поиск слова в тексте:</strong></p>
+    <pre><code>def find_text():
+    text_area.tag_remove('highlight', '1.0', tk.END)
+    search_word = search_entry.get()
+    if search_word:
+        start_pos = '1.0'
+        while True:
+            start_pos = text_area.search(search_word, start_pos, stopindex=tk.END)
+            if not start_pos:
+                break
+            end_pos = f"{start_pos}+{len(search_word)}c"
+            text_area.tag_add('highlight', start_pos, end_pos)
+            text_area.tag_config('highlight', background='lightblue')
+            start_pos = end_pos</code></pre>
+</div>
+</section>
+
+<section>
+<h1 class="center-text">Скриншоты</h1>
+<div class="left-margin">
+    <img src="images/editor_1.png" alt="Главное окно редактора" width="600" style="margin-bottom: 20px;">
+    <img src="images/editor_2.png" alt="Поиск текста" width="600" style="margin-bottom: 20px;">
+    <img src="images/editor_3.png" alt="Меню приложения" width="600">
+</div>
+</section>
+
+<section>
+<h1 class="center-text">Ссылка на проект</h1>
+<div class="left-margin">
+    <p>Код проекта доступен на GitHub:</p>
+    <p><a href="https://github.com/BPlama/practice2025-1" target="_blank">https://github.com/BPlama/practice2025-1</a></p>
+</div>
+</section>
+
+</main>
+
+<footer class="fixed-footer">
+    <p>&copy; 2025 Автоматизация процесса анкетирования (I курс).</p>
+</footer>
+
+</body>
+</html>
