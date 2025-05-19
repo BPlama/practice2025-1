@@ -68,31 +68,38 @@
 <main>
 
 <section>
-    <h1 class="center-text">Описание проекта</h1>
-    <div class="left-margin">
-            <p>Редактор текста на Python — это часть проектной практики, направленная на изучение языка Python и библиотеки <strong>Tkinter</strong> для создания GUI-приложений.</p>
-            <p>Возможности редактора:</p>
+  <h1 class="center-text">Описание проекта</h1>
+  <div class="left-margin">
+    <p>Текстовый редактор на Python создан в рамках проектной практики и демонстрирует возможности языка <strong>Python</strong> и библиотеки <strong>Tkinter</strong> для создания GUI-приложений. Проект также использует библиотеку <strong>python-docx</strong> для экспорта в формат .docx.</p>
+    <p><strong>Функциональность редактора:</strong></p>
     <ul>
-        <li>Открытие и сохранение файлов.</li>
-        <li>Редактирование текста в окне.</li>
-        <li>Поиск слов с подсветкой.</li>
-        <li>Горячие клавиши (Ctrl+O, Ctrl+S, Ctrl+F).</li>
+      <li>Открытие и сохранение файлов (.txt, .docx).</li>
+      <li>Редактирование и форматирование текста (жирный, курсив, подчёркнутый).</li>
+      <li>Поиск текста с подсветкой совпадений.</li>
+      <li>Поддержка горячих клавиш (Ctrl+O, Ctrl+S, Ctrl+F, Ctrl+B, Ctrl+I, Ctrl+U).</li>
+      <li>Выбор размера и шрифта текста.</li>
+      <li>Счётчик количества слов в реальном времени.</li>
     </ul>
-    </div>
+  </div>
 </section>
 
+
 <section>
-<h1 class="center-text">Этапы разработки</h1>
-<div class="left-margin">
+  <h1 class="center-text">Этапы разработки</h1>
+  <div class="left-margin">
     <ol>
-        <li>Создание основного окна приложения.</li>
-        <li>Добавление меню с пунктами "Открыть", "Сохранить", "Выход".</li>
-        <li>Вставка текстового поля для редактирования.</li>
-        <li>Реализация поиска текста по слову с подсветкой найденного.</li>
-        <li>Добавление панели поиска и кнопки "Найти".</li>
+      <li>Создание главного окна приложения и конфигурация интерфейса.</li>
+      <li>Добавление текстового поля и прокрутки.</li>
+      <li>Разработка меню: открытие, сохранение, выход.</li>
+      <li>Создание панели поиска и реализация подсветки найденных слов.</li>
+      <li>Добавление функционала для жирного, курсивного и подчёркнутого текста с помощью тегов Tkinter.</li>
+      <li>Сохранение форматированного текста в формате .docx с использованием python-docx.</li>
+      <li>Реализация счётчика слов и управления шрифтом.</li>
+      <li>Настройка горячих клавиш для основных действий.</li>
     </ol>
-</div>
+  </div>
 </section>
+
 
 <section>
 <h1 class="center-text">Пример кода</h1>
@@ -120,17 +127,49 @@ text_area.pack(expand=1, fill='both')</code></pre>
             text_area.tag_add('highlight', start_pos, end_pos)
             text_area.tag_config('highlight', background='lightblue')
             start_pos = end_pos</code></pre>
+
+    <p><strong>Применение форматирования (жирный текст):</strong></p>
+<pre><code>def apply_bold():
+    try:
+        current_tags = text_area.tag_names("sel.first")
+        if "bold" in current_tags:
+            text_area.tag_remove("bold", "sel.first", "sel.last")
+        else:
+            text_area.tag_add("bold", "sel.first", "sel.last")
+            text_area.tag_config("bold", font=("Arial", font_size, "bold"))
+    except tk.TclError:
+        pass</code></pre>
+
+    <p><strong>Подсчёт количества слов:</strong></p>
+    <pre><code>def update_word_count():
+    content = text_area.get("1.0", "end-1c")
+    words = content.split()
+    word_count_label.config(text=f"Слов: {len(words)}")</code></pre>
+
 </div>
 </section>
 
 <section>
+  <h1 class="center-text">Использованные библиотеки</h1>
+  <div class="left-margin">
+    <ul>
+      <li><strong>Tkinter</strong> — библиотека стандартной поставки Python для GUI.</li>
+      <li><strong>python-docx</strong> — для сохранения и экспорта документов с форматированием.</li>
+    </ul>
+  </div>
+</section>
+
+
+<section>
 <h1 class="center-text">Скриншоты</h1>
 <div class="left-margin">
-    <img src="images/editor_1.png" alt="Главное окно редактора" width="600" style="margin-bottom: 20px;">
-    <img src="images/editor_2.png" alt="Поиск текста" width="600" style="margin-bottom: 20px;">
-    <img src="images/editor_3.png" alt="Меню приложения" width="600">
+    <img src="images/editor/search_system.jpg" alt="Поиск текста" width="550" style="margin-bottom: 20px;">
+    <img src="images/editor/text_forms.jpg" alt="Форматирование текста" width="550" style="margin-bottom: 20px;">
+    <img src="images/editor/docx_example.jpg" alt="Главное окно редактора" width="550" style="margin-bottom: 20px;">
 </div>
 </section>
+
+
 
 <section>
 <h1 class="center-text">Ссылка на проект</h1>
